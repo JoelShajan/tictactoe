@@ -9,7 +9,7 @@ body {
     outline: none;
     &:hover {
       cursor: pointer;
-      background:rgba(255, 255, 255, 0.25);
+      background:rgba(0,0,0,.1);
     }
   }
   
@@ -39,9 +39,9 @@ body {
         &:last-child {
           border-right: none;
         }
-        &:hover{
-          background: rgba(255, 255, 255, 0.25);
-        }
+        //&:hover{
+          //background: rgba(255, 255, 255, 0.25);
+        //}
       }
     }
   }
