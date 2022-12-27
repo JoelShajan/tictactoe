@@ -3,12 +3,13 @@ import Board from "./components/Board";
 import './style/root.scss'
 import { wincon } from "./wincalc";
 import History from "./components/History";
+import  Status from "./components/Status";
 const app=() => {
   const [history,setHistory] = useState([{bdarr:Array(9).fill(null),isXNext:false}]);
   const [currentval,setcurr]=useState(0);
   const current=history[currentval];
   const win =wincon(current.bdarr);
-  let message= win? `The winner is ${win}` : current.isXNext? 'The next player is X' :'The next player is O';
+  
   const handleSqClick = (position)=>{
   if(current.bdarr[position]!=null || win){
     return;
@@ -33,7 +34,7 @@ const change=(move)=>{
   return (
   <div className="app" >
   <h1>TIC TAC TOE</h1>
-  <h3>{message}</h3>
+  <Status win={win} isXNext={current.isXNext} bdarr={current.bdarr}/>
   <Board handleSqClick={handleSqClick} bdarr={current.bdarr}/>
   <History history={history} currentval={currentval} change={change}/>
 </div>
