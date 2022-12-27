@@ -8,8 +8,8 @@ const app=() => {
   const [history,setHistory] = useState([{bdarr:Array(9).fill(null),isXNext:false}]);
   const [currentval,setcurr]=useState(0);
   const current=history[currentval];
-  const win =wincon(current.bdarr);
-  
+  const {win,winningcomb} =wincon(current.bdarr);
+  console.log(winningcomb);
   const handleSqClick = (position)=>{
   if(current.bdarr[position]!=null || win){
     return;
@@ -31,11 +31,16 @@ setcurr((prev)=>{return prev+1})
 const change=(move)=>{
   setcurr(move);
 }
+const resetter=()=>{
+   setcurr(0);
+   setHistory([{bdarr:Array(9).fill(null),isXNext:false}]);
+}
   return (
   <div className="app" >
   <h1>TIC TAC TOE</h1>
   <Status win={win} isXNext={current.isXNext} bdarr={current.bdarr}/>
-  <Board handleSqClick={handleSqClick} bdarr={current.bdarr}/>
+  <Board handleSqClick={handleSqClick} bdarr={current.bdarr} winning={winningcomb}/>
+  <button type="button" onClick={resetter}>Restart</button>
   <History history={history} currentval={currentval} change={change}/>
 </div>
 );

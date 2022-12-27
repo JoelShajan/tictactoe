@@ -13,8 +13,8 @@ export function wincon(bdarr){
     for(let i=0;i<8;i++){
         let [a,b,c]=combinations[i];
         if(bdarr[a]===bdarr[b] && bdarr[b]===bdarr[c] && bdarr[a]!=null){
-            return bdarr[a];
+            return {win:bdarr[a],winningcomb:[a,b,c],};
         }
      } 
-     return null;
+     return {win:null,winningcomb:[],}
 }
