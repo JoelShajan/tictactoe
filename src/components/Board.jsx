@@ -1,8 +1,8 @@
-import React,{useState} from 'react'
+import React from 'react'
 import { Square } from './Square'
-function Board() {
-const [bdarr,setbd] = useState(Array(9).fill(null));
-const [isXNext,setXNext] = useState(false);
+function Board({bdarr,handleSqClick}) {
+
+//console.log(bdarr);
 //  const handleSqClick= position=>{
 //     setbd(prev=>{
 //       return prev.map(Square,pos) => {
@@ -13,23 +13,7 @@ const [isXNext,setXNext] = useState(false);
 //         });
 //     });
 //  };
-const handleSqClick = (position)=>{
-  if(bdarr[position]!=null){
-    return;
-  }
-setbd ((prev) => {
-   return prev.map((curr,pos) => {
-    
-    if (pos===position){
-      
-      return isXNext? 'X':'O';
-    }
-    return curr;
-   })
-    
-})
-setXNext((prev)=> {return !prev;});
-};
+
   const rendersquare=(position)=>{
     return (
     <Square 
