@@ -2,18 +2,6 @@ import React from 'react'
 import { Square } from './Square'
 function Board({bdarr,handleSqClick}) {
 
-//console.log(bdarr);
-//  const handleSqClick= position=>{
-//     setbd(prev=>{
-//       return prev.map(Square,pos) => {
-//           if(pos === position){
-//             return "X";
-//           }
-//           return  Square;
-//         });
-//     });
-//  };
-
   const rendersquare=(position)=>{
     return (
     <Square 

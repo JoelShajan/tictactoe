@@ -9,7 +9,7 @@ export function wincon(bdarr){
         [2,5,8],
         [2,4,6]
     ];
-    console.log(combinations);
+    //console.log(combinations);
     for(let i=0;i<8;i++){
         let [a,b,c]=combinations[i];
         if(bdarr[a]===bdarr[b] && bdarr[b]===bdarr[c] && bdarr[a]!=null){
