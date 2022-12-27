@@ -9,7 +9,7 @@ const app=() => {
   const [currentval,setcurr]=useState(0);
   const current=history[currentval];
   const {win,winningcomb} =wincon(current.bdarr);
-  console.log(winningcomb);
+  //console.log(winningcomb);
   const handleSqClick = (position)=>{
   if(current.bdarr[position]!=null || win){
     return;
@@ -37,10 +37,13 @@ const resetter=()=>{
 }
   return (
   <div className="app" >
-  <h1>TIC TAC TOE</h1>
+  <h1>TIC <span className="text-green">TAC</span> TOE</h1>
   <Status win={win} isXNext={current.isXNext} bdarr={current.bdarr}/>
   <Board handleSqClick={handleSqClick} bdarr={current.bdarr} winning={winningcomb}/>
-  <button type="button" onClick={resetter}>Restart</button>
+  <button className={`btn-reset ${win?'active':''}`} type="button" onClick={resetter}>Restart</button>
+  <h2>
+    Game History
+  </h2>
   <History history={history} currentval={currentval} change={change}/>
 </div>
 );

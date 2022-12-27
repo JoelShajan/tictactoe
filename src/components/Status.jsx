@@ -4,12 +4,24 @@ const mystatus = ({win,isXNext,bdarr}) => {
 const tieflag=bdarr.every((val)=>val!==null);
 console.log(win,tieflag);
   return (
-    <h2>
-        {win!==null && `The winner is ${win}`}
-        {win===null && tieflag===true && 'X and Y are tied!'}
-        {win===null && tieflag===false && `The next player is ${isXNext?'X':'O'}`}
+    <div className='status-message'>
+        {win!==null && 
+        <>
+        The winner is <span className={win==='X'?'text-green':'text-orange'}>{win} </span>
+        </>
+        }
+        {win===null && tieflag===true && 
+        <>
+        <span className='text-green'>X</span> and <span className='text-orange'>Y</span> are tied!
+        </>
+        }
+        {win===null && tieflag===false && 
+        <>
+        The next player is <span className={isXNext?'text-green':'text-orange'}>{isXNext?'X':'O'}</span>
+        </>
+        }
         
-    </h2>
+    </div>
   )
 }
 export default mystatus;
