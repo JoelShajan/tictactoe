@@ -25,7 +25,9 @@ try{
     console.log(event.data);
     const pos=JSON.parse(event.data);
     if(pos.restart){
-      resetter()
+      setcurr(0);
+      //  socket1.send(JSON.stringify("hello"));
+      setHistory([{bdarr:Array(9).fill(null),isXNext:false}]);
     }
     else{
       handleRecieve(pos.position);
