@@ -24,7 +24,13 @@ try{
   socket1.onmessage = (event) => {
     console.log(event.data);
     const pos=JSON.parse(event.data);
-    handleRecieve(pos.position);
+    if(pos.restart){
+      resetter()
+    }
+    else{
+      handleRecieve(pos.position);
+    }
+    
 
 }
 }
@@ -78,6 +84,7 @@ const change=(move)=>{
   setcurr(move);
 }
 const resetter=()=>{
+  socket1.send(JSON.stringify({"restart":"yes"}));
    setcurr(0);
   //  socket1.send(JSON.stringify("hello"));
    setHistory([{bdarr:Array(9).fill(null),isXNext:false}]);
