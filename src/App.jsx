@@ -11,6 +11,7 @@ const app=() => {
   const current=history[currentval];
   const {win,winningcomb} =wincon(current.bdarr);
   const [socket1,setSocket1]=useState(null);
+  const [turn,setTurn]= useState(1);
   //console.log(winningcomb);
   
   useEffect(()=>{
@@ -43,7 +44,8 @@ catch(e){
 
 
   const handleSqClick = (position)=>{
-    socket1.send(JSON.stringify({"position":position}));
+    if(turn){
+      socket1.send(JSON.stringify({"position":position}));
   if(current.bdarr[position]!=null || win){
     return;
   }
@@ -60,6 +62,9 @@ catch(e){
     return prev.concat({bdarr:temp,isXNext:!current.isXNext})
 })
 setcurr((prev)=>{return prev+1})
+setTurn(0)
+    }
+    
 };
 
 const handleRecieve = (position)=>{
@@ -79,6 +84,7 @@ setHistory ((prev) => {
   return prev.concat({bdarr:temp,isXNext:!current.isXNext})
 })
 setcurr((prev)=>{return prev+1})
+setTurn(1)
 };
 
 
@@ -90,6 +96,7 @@ const resetter=()=>{
    setcurr(0);
   //  socket1.send(JSON.stringify("hello"));
    setHistory([{bdarr:Array(9).fill(null),isXNext:false}]);
+
 }
 
 
