@@ -16,7 +16,7 @@ const app=() => {
   
   useEffect(()=>{
     console.log("hello world")
-    Connection(setSocket1);
+    Connection("wss://synkit-api.azurewebsites.net/players",setSocket1);
 },[])
 
 if(socket1) {

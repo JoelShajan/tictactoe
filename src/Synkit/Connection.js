@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-async function Connection(setSocket1) {
+async function Connection(url,setSocket1) {
    //const[connect,setConnect]=useState(null);
-   const ws = new WebSocket("wss://synkit-api.azurewebsites.net/ws/123");
+   const ws = new WebSocket(url);
    ws.onopen = async () => {
        console.log('Chat connection opened:');
        await setSocket1(ws);  
