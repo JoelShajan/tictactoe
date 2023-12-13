@@ -14,6 +14,7 @@ function Board({bdarr,handleSqClick,winning}) {
 />
     )
   }; 
+  
   return (
     <div className='board'>
         <div className='board-row'>
